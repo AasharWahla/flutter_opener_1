@@ -22,18 +22,18 @@ class _ExpandingCircleState extends State<ExpandingCircle>
 
   void startAnimation() {
     _controller = AnimationController(vsync: this);
-    _controller.duration = Duration(
+    _controller.duration = const Duration(
       seconds: 2,
     );
 
     _controller.forward();
-    _controller.addListener(
-      () {
-        if (_controller.value == 1) {
-          _controller.stop();
-        }
-      },
-    );
+    // _controller.addListener(
+    //   () {
+    //     if (_controller.value == 1) {
+    //       _controller.stop();
+    //     }
+    //   },
+    // );
   }
 
   @override

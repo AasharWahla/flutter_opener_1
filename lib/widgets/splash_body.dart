@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_opener_1/constants/constants.dart';
-import 'package:flutter_opener_1/screens/home.dart';
 
-import 'expandingCircle.dart';
+import 'expanding_circle.dart';
 
 class SplashBody extends StatefulWidget {
-  SplashBody({Key? key, required this.onComplete}) : super(key: key);
+  const SplashBody({Key? key, required this.onComplete}) : super(key: key);
   final Function onComplete;
 
   @override
@@ -28,7 +26,7 @@ class _SplashBodyState extends State<SplashBody>
 
   void startAnimation() {
     _controller = AnimationController(vsync: this);
-    _controller.duration = Duration(
+    _controller.duration = const Duration(
       seconds: 2,
     );
     animation = CurvedAnimation(
@@ -48,20 +46,20 @@ class _SplashBodyState extends State<SplashBody>
             setState(
               () {
                 startFirst = true;
-                print('start first is true.');
+                debugPrint('start first is true.');
               },
             );
-            Future.delayed(Duration(seconds: 1)).then(
+            Future.delayed(const Duration(seconds: 1)).then(
               (value) {
-                print("second circle start");
+                debugPrint("second circle start");
                 setState(
                   () {
                     startSecond = true;
                   },
                 );
-                Future.delayed(Duration(seconds: 1)).then(
+                Future.delayed(const Duration(seconds: 1)).then(
                   (value) {
-                    print("second circle start");
+                    debugPrint("last circle start");
                     setState(() {
                       startFinalCircle = true;
                     });
@@ -89,25 +87,32 @@ class _SplashBodyState extends State<SplashBody>
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Positioned.fill(
+        const Positioned.fill(
           child: SizedBox(),
         ),
+        // * green circle
         if (startFirst)
-          Positioned.fill(
+          const Positioned.fill(
             child: Center(
               child: ExpandingCircle(
                 circleColor: Colors.green,
               ),
             ),
           ),
+
+        // * red circle
+
         if (startSecond)
-          Positioned.fill(
+          const Positioned.fill(
             child: Center(
               child: ExpandingCircle(
                 circleColor: Colors.red,
               ),
             ),
           ),
+
+        // * this is our animation
+
         AnimatedBuilder(
           animation: animation,
           builder: (ctx, chil) {
@@ -117,11 +122,11 @@ class _SplashBodyState extends State<SplashBody>
               child: Container(
                 height: 100,
                 width: 100,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'AW',
                     style: TextStyle(
@@ -135,8 +140,11 @@ class _SplashBodyState extends State<SplashBody>
             );
           },
         ),
+
+        // * white circle
+
         if (startFinalCircle)
-          Positioned.fill(
+          const Positioned.fill(
             child: Center(
               child: ExpandingCircle(
                 circleColor: Colors.white,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_opener_1/constants/constants.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle.dark,
         backgroundColor: Colors.black,
-        leading: SizedBox(),
-        title: Text(
+        leading: const SizedBox(),
+        title: const Text(
           "Home Screen!",
           style: TextStyle(
             color: Colors.white,
